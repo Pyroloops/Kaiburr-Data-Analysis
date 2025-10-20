@@ -62,6 +62,8 @@ The pipeline is structured into four main phases:
 * 1. Data Split: The data is split into 75% for training and 25% for testing using train_test_split with stratification.
 
 * 2. Model Pipelines: A scikit-learn Pipeline is used for each model, chaining the TfidfVectorizer and the classifier. This prevents data leakage and simplifies the workflow.
+ 
+<img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/c898223f-150b-43ae-a3db-25e3d7fb4df1" />
 
 * 3. Models Trained:
 
@@ -71,58 +73,22 @@ LogisticRegression
 
 LinearSVC (Linear Support Vector Machine)
 
-Performance Comparison (Table 4 Output): The script prints the macro-averaged results across all models to facilitate comparison.
+### 4. Phase IV: Detailed Evaluation 
 
-Model
+### Performance Comparison: 
 
-Accuracy
+| Model               | Accuracy  | Precision | Recall   | F1-Score  |
+|--------------------|-----------|-----------|---------|-----------|
+| MultinomialNB       | 0.862349  | 0.707728  | 0.721099 | 0.708091 |
+| LogisticRegression  | 0.908779  | 0.848243  | 0.768609 | 0.796689 |
+| LinearSVC           | 0.909467  | 0.869662  | 0.751412 | 0.783990 |
 
-Precision (macro)
+<img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/ec86951b-f348-4753-a7c8-3fc3791fddbf" />
 
-Recall (macro)
+### Confusion Matrix:
 
-F1-Score (macro)
+<img width="1170" height="989" alt="image" src="https://github.com/user-attachments/assets/a4890610-a747-44cc-9d55-af839b1fb5ff" />
 
-MultinomialNB
+## 7. Model Saveing
 
-0.XX
-
-0.XX
-
-0.XX
-
-0.XX
-
-LogisticRegression
-
-0.XX
-
-0.XX
-
-0.XX
-
-0.XX
-
-LinearSVC
-
-0.XX
-
-0.XX
-
-0.XX
-
-0.XX
-
-(Note: Actual values are printed by the script upon execution.)
-
-### 4. Phase IV: Detailed Evaluation (Section 6.5)
-
-Based on the comparison (typically showing LinearSVC as the best performer), a deeper analysis is conducted on the final model.
-
-Classification Report: A detailed report is printed, showing precision, recall, and F1-score for each individual category, which is crucial for identifying class-specific biases or weaknesses.
-
-Confusion Matrix: A confusion matrix is generated and visualized using a Seaborn heatmap. This visually demonstrates where the model is making errors (i.e., which true categories are being misclassified as others).
-
-## 7. Model Persistence
-
-The final, best-performing pipeline (TfidfVectorizer + LinearSVC) is saved to a file using the pickle library, allowing the model to be loaded and used for new predictions without having to retrain it.
+The final best-performing pipeline (TfidfVectorizer + LinearSVC) along with the other two models are saved using the pickle library, allowing the models to be loaded and used for new predictions without having to retrain it.
